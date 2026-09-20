@@ -1,2 +1,2 @@
-// Токен бота Slack (Gitleaks ищет паттерн xoxb- и фиксированную длину)
-const SLACK_BOT_TOKEN = "xoxb-123456789012-1234567890123-456789012345678901234567";
+// Безопасный код: секреты не хранятся в коде, а берутся из переменных окружения (Environment Variables)
+const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
