@@ -1,3 +1,6 @@
-// Тестовый файл с настоящей структурой секретов
-const AWS_SECRET_ACCESS_KEY = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
-const GITHUB_TOKEN = "ghp_1234567890abcdefghijklmnopqrstuvwxyz1234";
+// Тестовый приватный ключ RSA (Gitleaks поймает его со 100% гарантией)
+const RSA_PRIVATE_KEY = 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAz7Q1
+-----END RSA PRIVATE KEY-----
+;
