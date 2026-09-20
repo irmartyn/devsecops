@@ -7,7 +7,6 @@ on:
     branches: [ "main", "master" ]
 
 jobs:
-  # Наша вчерашняя задача на секреты
   gitleaks-scan:
     runs-on: ubuntu-latest
     steps:
@@ -21,14 +20,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # НОВАЯ ЗАДАЧА: Статический анализ кода (SAST) через Semgrep
   semgrep-scan:
     runs-on: ubuntu-latest
+    # Запускаем шаг внутри официального свежего контейнера Semgrep
+    container:
+      image: semgrep/semgrep
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Run Semgrep
-        uses: semgrep/semgrep-action@v1
-        with:
-          config: p/default # Используем стандартный набор правил безопасности от Semgrep
+        # Флаг --error заставит Semgrep сломать сборку (дать красный ❌) при находках
+        run: semgrep scan --config p/javascript --error
