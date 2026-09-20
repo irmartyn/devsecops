@@ -1,5 +1,2 @@
-const RSA_PRIVATE_KEY =
------BEGIN RSA PRIVATE KEY-----
-MIIEogIBAAKCAQEAz7Q123
------END RSA PRIVATE KEY-----
-;
+// Токен бота Slack (Gitleaks ищет паттерн xoxb- и фиксированную длину)
+const SLACK_BOT_TOKEN = "xoxb-123456789012-1234567890123-456789012345678901234567";
