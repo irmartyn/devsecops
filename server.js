@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 
-app.get('/run', (req, res) => { => {
+app.get('/run', (req, res) => {
     // ОПАСНОСТЬ: eval() исполняет любой ввод пользователя как код!
     let userInput = req.query.code;
     let result = eval(userInput); 
