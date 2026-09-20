@@ -1,0 +1,26 @@
+name: Security Checks
+
+# Настраиваем триггер: робот запускается при каждом push (загрузке кода) в репозиторий
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  # Задача 1: Поиск утечек секретов
+  gitleaks-scan:
+    runs-on: ubuntu-latest # Выделяем виртуальный сервер на Linux
+
+    steps:
+      # Шаг A: Скачиваем код репозитория на виртуальный сервер
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Скачиваем всю историю коммитов, чтобы найти секреты в прошлом
+
+      # Шаг B: Запускаем официального бота Gitleaks
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
