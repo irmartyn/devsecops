@@ -32,3 +32,17 @@ jobs:
       - name: Run Semgrep
         # Флаг --error заставит Semgrep сломать сборку (дать красный ❌) при находках
         run: semgrep scan --config p/javascript --error
+
+  trivy-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy (SCA)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          exit-code: '1' # Заставляет шаг завершиться ошибкой (❌) при критических находках
+          severity: 'CRITICAL,HIGH'
