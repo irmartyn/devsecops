@@ -1,0 +1,8 @@
+{
+   "name": devsecops",
+   "version": "1.0.0",
+   "description": "Тестовый проект DevSecOps",
+   "dependencies": {
+     "express": "4.16.0"
+   }
+}
