@@ -45,4 +45,4 @@ jobs:
           scan-type: 'fs'
           scan-ref: '.'
           exit-code: '1' # Заставляет шаг завершиться ошибкой (❌) при критических находках
-          severity: 'CRITICAL,HIGH'
+          severity: 'CRITICAL,HIGH,MEDIUM'
